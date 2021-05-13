@@ -1,7 +1,9 @@
 <template>
     <div id=cliente>
-        <input type="text" :value="nome">
-        <hr> <!-- data biding é ligar uma váriavel a um campo por meio do : antes do valor do campo-->
+        <!-- one way data biding é ligar uma váriavel a um campo por meio do : antes do valor do campo-->
+        <input type="text" v-model="nome">
+        <hr> 
+        <!-- two way data biding é ligar uma váriavel a um campo por meio do v-model como campo-->
         <input type="text" :value="descricao"> 
         <h2 id=cliente-nome>{{nome}}</h2>
         <p>Descrição do cliente: {{descricao}}</p>
