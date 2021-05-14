@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <input type="text" v-model="clienteJoao.nome" placeholder="Nome" >
-    <Cliente :cliente="clienteJoao"/>
+    <Cliente :cliente="clienteJoao" :showIdade="true"/>
     <Cliente :cliente="clienteAna"/>
   </div>
 </template>

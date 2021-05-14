@@ -3,7 +3,8 @@
         <h4>Nome: {{cliente.nome}}</h4>
         <hr>
         <p>Email: {{cliente.email}}</p>
-        <p>Idade: {{cliente.idade}}</p>
+        <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
+        <p v-else>Idade oculta</p>
     </div>
 </template>
 
@@ -11,13 +12,12 @@
 export default {
     data(){
         return{
+
         }
     },
     props: {
-        nome: String,
-        idade: Number,
-        email: String,
-        cliente: Object
+        cliente: Object,
+        showIdade: Boolean
     }
 };
 </script>
