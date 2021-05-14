@@ -1,12 +1,9 @@
 <template>
     <div id=cliente>
-        <!-- one way data biding é ligar uma váriavel a um campo por meio do : antes do valor do campo-->
-        <input type="text" v-model="nome">
-        <hr> 
-        <!-- two way data biding é ligar uma váriavel a um campo por meio do v-model como campo-->
-        <input type="text" :value="descricao"> 
-        <h2 id=cliente-nome>{{nome}}</h2>
-        <p>Descrição do cliente: {{descricao}}</p>
+        <h4>Nome: {{cliente.nome}}</h4>
+        <hr>
+        <p>Email: {{cliente.email}}</p>
+        <p>Idade: {{cliente.idade}}</p>
     </div>
 </template>
 
@@ -14,19 +11,23 @@
 export default {
     data(){
         return{
-            nome: "Gontijo",
-            numero: "",
-            email: "",
-            idade: 0,
-            descricao: "Descrição escrita dentro do javascript"
         }
+    },
+    props: {
+        nome: String,
+        idade: Number,
+        email: String,
+        cliente: Object
     }
 };
 </script>
 
 <style scoped>
     #cliente{
+        background-color: aqua;
         max-width: 600px;
+        padding: 1%;
+        margin-top: 2%;
     }
 </style>
 
