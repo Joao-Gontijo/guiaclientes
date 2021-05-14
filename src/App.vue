@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <input type="text" v-model="clienteJoao.nome" placeholder="Nome" >
-    <Cliente :cliente="clienteJoao" :showIdade="true"/>
-    <Cliente :cliente="clienteAna"/>
-  </div>
+    <Cliente/>
+    <div v-for="(cliente,index) in clientes" :key="cliente.id">
+      <h4>{{index+1}}</h4>
+      <Cliente :cliente="cliente"/>
+      <hr>
+      <h4>Edição: </h4>
+      <input type="text" v-model="cliente.nome">
+      <input type="text" v-model="cliente.email">
+      </div>
+    
+    </div>
 </template>
 
 <script>
@@ -13,16 +20,18 @@ export default {
   name: 'App',
   data(){
     return{
-      clienteJoao:{
-        nome: "João",
-        email: "joao@email.com",
-        idade: 20
-      },
-      clienteAna:{
-        nome: "Ana",
-        email: "ana@email.com",
-        idade: 18
-      }
+      clientes: [
+        {
+          id: 1,
+          nome: "João",
+          email: "joao@email.com",
+          idade: 20
+      },{
+          id: 2,
+          nome: "Ana",
+          email: "ana@email.com",
+          idade: 18
+      }]
     }
   },
   components: {
