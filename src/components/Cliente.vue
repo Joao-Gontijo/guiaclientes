@@ -37,7 +37,7 @@ export default {
     }
 
     .cliente-premium{
-        background-color: goldenrod;
+        background-color: yellow;
         max-width: 600px;
         padding: 1%;
         margin-top: 2%;
