@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h3>Cadastro: </h3>
-    <input type="text" placeholder="Nome" v-model="campoNome"> <br>
+    <small id="nomeErro" v-show="deuErro"> Nome inválido </small><br>
+    <input required type="text" placeholder="Nome" v-model="campoNome"> <br>
     <input type="text" placeholder="Email" v-model="campoEmail"> <br>
     <input type="number" placeholder="Idade" v-model="campoIdade"> <br>
     <button @click="cadastrarUsuario">Cadastrar</button>
@@ -22,6 +23,7 @@ export default {
   name: 'App',
   data(){
     return{
+      deuErro: false,
       campoNome: "",
       campoEmail: "",
       campoIdade: "",
@@ -45,19 +47,27 @@ export default {
   },
   methods: {
     cadastrarUsuario: function(){
-      this.clientes.push({
+      if(this.campoNome == "" || this.campoNome == " " || this.campoNome.length < 3){
+        this.deuErro = true;
+      } else {
+        this.clientes.push({
         nome: this.campoNome,
         email: this.campoEmail,
         idade: this.campoIdade,
         id: Date.now()
-      });
+        });
       this.campoNome = "";
       this.campoEmail= "";
       this.campoIdade= 0;
+      this.deuErro = false;
+      }
     }
   }
 }
 </script>
 
 <style>
+  #nomeErro{
+    color: red;
+  }
 </style>
