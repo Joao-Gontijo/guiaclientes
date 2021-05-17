@@ -5,6 +5,7 @@
         <p> Email: {{cliente.email}}</p>
         <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
         <p v-else>Idade oculta</p>
+        <button @click="mudarCor()">Mudar a cor</button>
     </div>
 </template>
 
@@ -12,29 +13,33 @@
 export default {
     data(){
         return{
-            isPremium: true
+            isPremium: false
         }
     },
     props: {
         cliente: Object,
         showIdade: Boolean
+    },
+    methods: {
+        mudarCor: function() {
+            this.isPremium = !this.isPremium;   
+        }
     }
 };
 </script>
 
 <style scoped>
     .cliente{
-        background-color: aqua;
+        background-color: cornflowerblue;
         max-width: 600px;
         padding: 1%;
         margin-top: 2%;
     }
 
     .cliente-premium{
-        background-color: cornflowerblue;
+        background-color: goldenrod;
         max-width: 600px;
         padding: 1%;
         margin-top: 2%;
     }
 </style>
-
