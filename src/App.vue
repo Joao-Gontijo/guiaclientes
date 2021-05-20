@@ -1,5 +1,18 @@
 <template>
   <div id="app">
+
+    <div class="buttons">
+  <button class="button is-primary">Primary</button>
+  <button class="button is-link">Link</button>
+</div>
+
+<div class="buttons">
+<button class="button is-info">Info</button>
+  <button class="button is-success">Success</button>
+  <button class="button is-warning">Warning</button>
+  <button class="button is-danger">Danger</button>
+</div>
+    
     <h3>Cadastro: </h3>
     <small id="nomeErro" v-show="deuErro"> Nome inválido </small><br>
     <input required type="text" placeholder="Nome" v-model="campoNome"> <br>
