@@ -7,6 +7,7 @@
         <p v-else>Idade oculta</p>
         <button @click="mudarCor()">Usuário Premium</button>
         <button @click="emitirEventoDelete">Deletar</button>
+        <h4>Id Especial: {{idEspecial}}</h4>
     </div>
 </template>
 
@@ -34,9 +35,14 @@ export default {
             alert("Alerta")
         }
     },
-    filters:{
+    filters: {
         processarNome: function(value){ //isso vai alterar somente a visualização, e não o dado salvo
             return value.toUpperCase() + " Gontijo".toUpperCase()
+        }
+    },
+    computed: {
+        idEspecial: function(){
+            return (this.cliente.email + this.cliente.nome + this.cliente.id).toUpperCase();
         }
     }
 };
