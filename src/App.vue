@@ -7,7 +7,7 @@
     <input type="number" placeholder="Idade" v-model="campoIdade"> <br>
     <button @click="cadastrarUsuario">Cadastrar</button>
     <hr>
-    <div v-for="(cliente,index) in clientes" :key="cliente.id">
+    <div v-for="(cliente,index) in orderClientes" :key="cliente.id">
       <h4>{{index+1}}</h4>
       <Cliente :cliente="cliente" @meDelete="deletarUsuario($event)"/>
       
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 import Cliente from "./components/Cliente"
 // import Produto from "./components/Produto"
 export default {
@@ -68,6 +69,11 @@ export default {
       var id = $event.idDoCliente; //pegando o id do cliente
       var novoArray = this.clientes.filter(cliente => cliente.id != id);  //colocar um filtro que é uma função que recebe uma regra, 
       this.clientes = novoArray;                                          //no caso, para cada cliente dentro do array ele vai aplicar a regrar e retornar um novo array
+    }
+  },
+  computed:{
+    orderClientes: function() {
+      return _.orderBy(this.clientes,['nome'],['asc']);
     }
   }
 }
