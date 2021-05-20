@@ -1,6 +1,6 @@
 <template>
     <div :class="{'cliente': !isPremium, 'cliente-premium': isPremium}">
-        <h4>Nome: {{cliente.nome}}</h4>
+        <h4>Nome: {{cliente.nome | processarNome}}</h4>
         <hr>
         <p> Email: {{cliente.email}}</p>
         <p v-if="showIdade == true">Idade: {{cliente.idade}}</p>
@@ -30,8 +30,13 @@ export default {
             this.$emit("meDelete", {idDoCliente: this.cliente.id, component: this}); //emitir evento do componente filho para o componente pai
         },
         testar: function() {
-            console.log("olha o teste aí viado");
-            alert("desgraça")
+            console.log("Teste no log");
+            alert("Alerta")
+        }
+    },
+    filters:{
+        processarNome: function(value){ //isso vai alterar somente a visualização, e não o dado salvo
+            return value.toUpperCase() + " Gontijo".toUpperCase()
         }
     }
 };
