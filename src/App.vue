@@ -9,7 +9,7 @@
     <hr>
     <div v-for="(cliente,index) in clientes" :key="cliente.id">
       <h4>{{index+1}}</h4>
-      <Cliente :cliente="cliente"/>
+      <Cliente :cliente="cliente" @meDelete="deletarUsuario($event)"/>
       
       </div>
     
@@ -61,6 +61,13 @@ export default {
       this.campoIdade= 0;
       this.deuErro = false;
       }
+    },
+    deletarUsuario: function($event){
+      console.log("recebendo evento");
+      console.log($event.idDoCliente);
+      var id = $event.idDoCliente; //pegando o id do cliente
+      var novoArray = this.clientes.filter(cliente => cliente.id != id);  //colocar um filtro que é uma função que recebe uma regra, 
+      this.clientes = novoArray;                                          //no caso, para cada cliente dentro do array ele vai aplicar a regrar e retornar um novo array
     }
   }
 }
@@ -69,5 +76,5 @@ export default {
 <style>
   #nomeErro{
     color: red;
-  }
+  };
 </style>
